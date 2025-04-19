@@ -9,7 +9,7 @@
     html, body {
       height: 100%;
       width: 100%;
-      background-color: #000;
+      background-color: #111;
       font-family: 'IBM Plex Mono', monospace;
       overflow: hidden;
     }
@@ -21,6 +21,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0 auto;
+      max-width: 1200px;
     }
 
     .record-container {
@@ -53,8 +55,8 @@
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       border: solid 1px #d9a388;
-      width: 15vmin;
-      height: 15vmin;
+      width: 25vmin;
+      height: 25vmin;
       border-radius: 50%;
       box-shadow: 0 0 0 4px #da5b33,
         inset 0 0 0 27%;
@@ -82,24 +84,24 @@
 
     .menu {
       font-size: 14px;
-      margin-top: 20%;
+      margin-top: 5%;
       margin-left: 60px;
     }
 
     .title {
-      font-family: 'Big Shoulders Display', sans-serif;
-      font-size: 14vmin;
-      line-height: 1;
-      margin-top: 5%;
-      margin-left: 60px;
-      width: calc(50vw - 120px);
-      text-align: left;
-      white-space: nowrap;
-    }
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 15vmin;
+    line-height: 1;
+    margin-top: 5%;
+    margin-left: 60px;
+    width: 100%; /* 수정됨: 전체 넓이 사용 */
+    text-align: left;
+    white-space: nowrap;
+     }
 
     .subtitle {
       font-size: 20px;
-      margin-top: 20px;
+      margin-top: 10px;
       margin-left: 60px;
       color: #ccc;
       text-align: left;
@@ -139,7 +141,8 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+      background: linear-gradient(to bottom, rgba(0,0,0,1) 2%, rgba(0,0,0,0) 100%),
+        url('https://grainy-gradients.vercel.app/noise.svg');
       background-repeat: repeat;
       background-size: auto;
       opacity: 0.35;
@@ -147,27 +150,93 @@
       z-index: 5;
     }
 
+    .input-box {
+        margin: 30px 60px 10px;
+        width: calc(100% - 120px);
+      }
+  
+      .input-box input {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: none;
+        border-radius: 4px;
+        background-color: #111;
+        color: #fff;
+      }
+  
+      .input-box button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 14px;
+        border: none;
+        background-color: #da5b33;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+  
+      .input-box button::after {
+        content: ' ↗';
+        font-size: 16px;
+        margin-left: 5px;
+      }
+
+    .weather-info {
+        display: flex;
+        margin: 10px 60px;
+        gap: 20px;
+        color: #aaa;
+        font-size: 12px;
+        align-items: center;
+      }  
+
+    .weather-info div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+  
+    .weather-info img {
+        width: 16px;
+        height: 16px;
+        filter: invert(0.6);
+      }
+
     @media (max-width: 768px) {
       .info-cover {
         width: 100%;
         height: 50%;
-        padding: 30px;
+        padding: 20px 5px 0;
         align-items: center;
+        justify-content: flex-start;
+      }
+
+      .menu {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
       }
 
       .title {
-        font-size: 64px;
+        font-size: 120px;
         width: 100%;
         text-align: center;
         margin-left: 0;
       }
-
-      .subtitle, .menu {
+      .subtitle {
+        font-size: 20px;
+        margin-top: 20px;
         margin-left: 0;
-        text-align: center;
+        color: #ccc;
+        text-align: left;
       }
 
     }
+      
+        
   </style>
 </head>
 <body>
@@ -177,20 +246,95 @@
       <div class="record"></div>
     </div>
     <div class="info-cover">
-      <div class="menu">Home &nbsp;&nbsp; About</div>
+        <div class="menu">
+            <a href="index.html" style="color: white; text-decoration: none; margin-right: 16px;">Home</a>
+            <a href="about.html" style="color: white; text-decoration: none;">About</a>
+          </div>
       <div class="title">ARTOPUS</div>
-      <div class="subtitle">Sculptural Serenity</div>
+      <div class="subtitle">Mood Stamp</div>
+        
+      <div class="weather-info">
+        <div><img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" alt="Location">서울, 대한민국</div>
+        <div><img src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png" alt="Weather">맑음 18°C</div>
+        <div><img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Time">PM 8:24</div>
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Whisper your mood into a single line...">
+        <button>Record</button>
+      </div>
+      
+
     </div>
     <div class="footer">
-      <div class="left">
-        devcow85@gmail.com<br />
-        &copy; 2025 devcow85
+        <div class="left">
+          devcow85@gmail.com<br />
+          &copy; 2025 devcow85
+        </div>
+        <div class="right">
+          <a href="https://github.com/devcow85" target="_blank" aria-label="GitHub">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+          </a>
+          <a href="https://vercel.com" target="_blank" aria-label="Vercel">
+            <img src="https://assets.vercel.com/image/upload/front/favicon/vercel/favicon.ico" alt="Vercel" style="filter: invert(1); border-radius: 4px;">
+          </a>
+          <a href="https://discord.com" target="_blank" aria-label="Discord">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+          </a>
+        </div>
       </div>
-      <div class="right">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
-        <span>Feed</span>
-      </div>
-    </div>
   </div>
 </body>
 </html>
+
+<script>
+    const weatherInfoEl = document.querySelector('.weather-info');
+    const locationEl = weatherInfoEl.children[0];
+    const weatherEl = weatherInfoEl.children[1];
+    const timeEl = weatherInfoEl.children[2];
+  
+    function updateTime() {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      const displayTime = `${ampm} ${hours % 12 || 12}:${minutes}`;
+      timeEl.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Time"> ${displayTime}`;
+    }
+  
+    function updateLocationAndWeather() {
+      if (!navigator.geolocation) {
+        locationEl.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" alt="Location"> 위치 정보 없음`;
+        return;
+      }
+  
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+  
+        // OpenWeatherMap API 요청 (자신의 API 키 입력)
+        const apiKey = 'YOUR_API_KEY';
+        const apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=kr&appid=${apiKey}`;
+  
+        try {
+          const res = await fetch(apiURL);
+          const data = await res.json();
+  
+          const city = data.name;
+          const country = data.sys.country;
+          const temp = Math.round(data.main.temp);
+          const description = data.weather[0].description;
+  
+          locationEl.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" alt="Location"> ${city}, ${country}`;
+          weatherEl.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png" alt="Weather"> ${description} ${temp}°C`;
+  
+        } catch (error) {
+          console.error('날씨 정보 오류:', error);
+          weatherEl.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png" alt="Weather"> None`;
+        }
+      });
+    }
+  
+    // 초기 실행
+    updateTime();
+    updateLocationAndWeather();
+    setInterval(updateTime, 60000); // 1분마다 시간 업데이트
+  </script>

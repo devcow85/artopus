@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ARTOPUS - about</title>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      width: 100%;
+      background-color: #111;
+      font-family: 'IBM Plex Mono', monospace;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    .info-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background-color: #000;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: #fff;
+    }
+
+    .menu {
+      font-size: 14px;
+      margin-top: 5%;
+      margin-left: 60px;
+    }
+
+
+    .subtitle {
+      font-size: 20px;
+      margin-top: 10px;
+      margin-left: 60px;
+      color: #ccc;
+      text-align: left;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 5%;
+      left: 0;
+      width: 100%;
+      padding: 0 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #aaa;
+      z-index: 3;
+    }
+
+    .footer .left {
+      text-align: left;
+    }
+
+    .footer .right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer .right img {
+      width: 20px;
+      height: 20px;
+      filter: invert(0.7);
+    }
+
+    .grain {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,1) 2%, rgba(0,0,0,0) 100%),
+        url('https://grainy-gradients.vercel.app/noise.svg');
+      background-repeat: repeat;
+      background-size: auto;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    @media (max-width: 768px) {
+      .info-cover {
+        width: 100%;
+        height: 77%;
+        padding: 20px 5px 0;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .menu {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
+      }
+
+      .subtitle {
+        font-size: 20px;
+        margin-top: 20px;
+        margin-left: 0;
+        color: #ccc;
+        text-align: left;
+      }
+
+    }
+      
+        
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="container">
+    <div class="info-cover">
+        <div class="menu">
+            <a href="index.html" style="color: white; text-decoration: none; margin-right: 16px;">Home</a>
+            <a href="about.html" style="color: white; text-decoration: none;">About</a>
+          </div>
+      
+      <div class="subtitle">Mood Stamp</div>
+      <div class="about-columns" style="display: flex; flex-direction: row; flex-wrap: wrap; margin: 40px 60px 0; gap: 40px; max-width: 90%;">
+        <div style="flex: 1 1 45%; color: #ddd; font-size: 15px; line-height: 1.6;">
+          <p>
+            Each day, you leave a trace — a whisper, a hum, a thought lost in the noise.  
+            ARTOPUS invites you to condense your moment into a single line of poetry.  
+            Your emotion becomes music, your presence becomes sound.  
+            A fleeting feeling is now a permanent groove.
+          </p>
+        </div>
+        <div style="flex: 1 1 45%; color: #aaa; font-size: 15px; line-height: 1.6;">
+          <p>
+            Powered by your words, your time, and your place,  
+            we spin a lo-fi loop that reflects your atmosphere.  
+            The result is etched onto a digital vinyl, uniquely yours.  
+            Every record is a sculpture of serenity in a noisy world.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+        <div class="left">
+          devcow85@gmail.com<br />
+          &copy; 2025 devcow85
+        </div>
+        <div class="right">
+          <a href="https://github.com/devcow85" target="_blank" aria-label="GitHub">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+          </a>
+          <a href="https://vercel.com" target="_blank" aria-label="Vercel">
+            <img src="https://assets.vercel.com/image/upload/front/favicon/vercel/favicon.ico" alt="Vercel" style="filter: invert(1); border-radius: 4px;">
+          </a>
+          <a href="https://discord.com" target="_blank" aria-label="Discord">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+          </a>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
