@@ -2,47 +2,195 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ARTOPUS Test</title>
-  <!-- 폰트 로드 -->
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;400;700&display=swap" rel="stylesheet">
+  <title>ARTOPUS LP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
   <style>
-    /* 전체 배경 */
-    body {
-      background: #000;
-      padding: 60px;
-      margin: 0;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      width: 100%;
+      background-color: #000;
+      font-family: 'IBM Plex Mono', monospace;
+      overflow: hidden;
     }
 
-    /* 타이틀 스타일 */
-    h1 {
-      font-family: 'Big Shoulders Display', sans-serif;
-      font-size: 180px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      line-height: 1em;
-      color: rgba(235, 238, 233, 0.5);
+    .container {
       position: relative;
-      z-index: 1;
-    }
-
-    /* 노이즈 필터 레이어 */
-    .noise-filter {
-      position: fixed;
-      top: 0;
-      left: 0;
       width: 100vw;
       height: 100vh;
-      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .record-container {
+      display: inline-block;
+      overflow: hidden;
+      width: 90vmin;
+      height: 90vmin;
+      border-radius: 50%;
+      background: #b5ac9a;
+      animation: spin 30s linear infinite;
+      z-index: 1;
+      position: relative;
+    }
+
+    .record {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: 
+        linear-gradient(30deg, transparent 40%, rgba(42, 41, 40, .85) 40%) no-repeat 100% 0,
+        linear-gradient(60deg, rgba(42, 41, 40, .85) 60%, transparent 60%) no-repeat 0 100%,
+        repeating-radial-gradient(#2a2928 0 3px, #ada9a0 4px, #2a2928 5px);
+      background-size: 50% 100%, 100% 50%, 100% 100%;
+    }
+
+    .record:after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border: solid 1px #d9a388;
+      width: 15vmin;
+      height: 15vmin;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px #da5b33,
+        inset 0 0 0 27%;
+      background: #b5ac9a;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .info-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background-color: #000;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: #fff;
+    }
+
+    .menu {
+      font-size: 14px;
+      margin-top: 20%;
+      margin-left: 60px;
+    }
+
+    .title {
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-size: 14vmin;
+      line-height: 1;
+      margin-top: 5%;
+      margin-left: 60px;
+      width: calc(50vw - 120px);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      margin-top: 20px;
+      margin-left: 60px;
+      color: #ccc;
+      text-align: left;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 5%;
+      left: 0;
+      width: 100%;
+      padding: 0 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #aaa;
+      z-index: 3;
+    }
+
+    .footer .left {
+      text-align: left;
+    }
+
+    .footer .right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer .right img {
+      width: 20px;
+      height: 20px;
+      filter: invert(0.7);
+    }
+
+    .grain {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-image: url('https://grainy-gradients.vercel.app/noise.svg');
       background-repeat: repeat;
       background-size: auto;
-      opacity: 0.35; /* 강도 조절 가능 */
-      z-index: 3;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    @media (max-width: 768px) {
+      .info-cover {
+        width: 100%;
+        height: 50%;
+        padding: 30px;
+        align-items: center;
+      }
+
+      .title {
+        font-size: 64px;
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+      }
+
+      .subtitle, .menu {
+        margin-left: 0;
+        text-align: center;
+      }
+
     }
   </style>
 </head>
 <body>
-  <div class="noise-filter"></div> <!-- ✅ 노이즈 레이어 -->
-  <h1>ARTOPUS</h1>                 <!-- ✅ 타이틀 -->
+  <div class="grain"></div>
+  <div class="container">
+    <div class="record-container">
+      <div class="record"></div>
+    </div>
+    <div class="info-cover">
+      <div class="menu">Home &nbsp;&nbsp; About</div>
+      <div class="title">ARTOPUS</div>
+      <div class="subtitle">Sculptural Serenity</div>
+    </div>
+    <div class="footer">
+      <div class="left">
+        devcow85@gmail.com<br />
+        &copy; 2025 devcow85
+      </div>
+      <div class="right">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+        <span>Feed</span>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
